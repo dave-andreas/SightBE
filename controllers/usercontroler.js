@@ -66,5 +66,13 @@ module.exports = {
             if (err) return res.status(500).send(err)
             return res.status(200).send(result[0])
         })
+    },
+    changemode: (req,res) => {
+        const {dark,id} = req.query
+        var sql = `update users set darkmode=${dark} where id=${id}`
+        db.query(sql, (err,result) => {
+            if (err) return res.status(500).send(err)
+            return res.status(200).send({message: 'change mode'})
+        })
     }
 }
